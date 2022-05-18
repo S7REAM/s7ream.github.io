@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>sus</title>
+<style type="text/css">
+div.a {
+width: 0px;
+height:0px;
+background-color:red;
+position:fixed;
+    
+}
+
+body {
+  padding: 25px;
+  background-color: white;
+  color: black;
+  font-size: 25px;
+}
+
+.dark-mode {
+  background-color: black;
+  color: white;
+}
+
+.button {
+  padding: 15px 25px;
+  font-size: 24px;
+  text-align: center;
+  cursor: pointer;
+  outline: none;
+  color: #fff;
+  background-color: #04AA6D;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 9px #999;
+}
+
+.button:hover {background-color: #3e8e41}
+
+.button:active {
+  background-color: #3e8e41;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+
+</style>
+</head>
+<body>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+<button class="button" onclick="darkMode()">Toggle dark mode</button>
+<div class='a' id="ab">  <h2>boob</h2>
+</div>
+<script defer>
+  $(document).ready(function(){
+      animateDiv();
+  });
+
+  function darkMode() {
+     var element = document.body;
+    element.classList.toggle("dark-mode");
+  }
+
+  function makeNewPosition(){
+    
+      // Get viewport dimensions (remove the dimension of the div)
+      var h = $(window).height() - 50;
+      var w = $(window).width() - 50;
+    
+      var nh = Math.floor(Math.random() * h);
+      var nw = Math.floor(Math.random() * w);
+
+      var x = Math.floor(Math.random() * 256);
+      var y = 100 + Math.floor(Math.random() * 256);
+      var z = 50 + Math.floor(Math.random() * 256);
+      var bgColor = "rgb(" + x + "," + y + "," + z + ")";
+      console.log(bgColor);
+      ab.style.color = bgColor
+      
+    
+      return [nh,nw];   
+     
+    
+}
+
+  function animateDiv(){
+      var newq = makeNewPosition();
+      $('.a').animate({ top: newq[0], left: newq[1] }, function(){
+        animateDiv();        
+      });
+    
+  };
+
+</script>
+
+</body>
+</html>
